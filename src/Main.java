@@ -27,41 +27,43 @@ public class Main {
                 if (withdrawal == -1) {
                     System.out.println("User " + user + " chose to exit.");
                     break;
-                }
-
-                if (withdrawal <= 0) {
+                } else if (withdrawal <= 0) {
                     System.out.println("Invalid amount. Please try again.");
                     continue;
-                }
-
-                if (withdrawal > userBalance) {
+                } else if (withdrawal > userBalance) {
                     System.out.println("Insufficient balance. Please try again.");
                     continue;
-                }
-
-                if (withdrawal > 500) {
+                } else if (withdrawal > 500) {
                     System.out.println("Transaction limit exceeded! Cannot withdraw more than $500 at once.");
                     break;
                 }
+                else {
 
-                userBalance -= withdrawal;
-                System.out.println("User " + user + " successfully withdrew $" + withdrawal);
-                successfulWithdrawals++;
+                    userBalance -= withdrawal;
+                    System.out.println("User " + user + " successfully withdrew $" + withdrawal);
+                    successfulWithdrawals++;
 
-                switch (user) {
-                    case 1: user1Balance = userBalance; break;
-                    case 2: user2Balance = userBalance; break;
-                    case 3: user3Balance = userBalance; break;
+                    switch (user) {
+                        case 1:
+                            user1Balance = userBalance;
+                            break;
+                        case 2:
+                            user2Balance = userBalance;
+                            break;
+                        case 3:
+                            user3Balance = userBalance;
+                            break;
+                    }
+
+                    if (successfulWithdrawals == 3) {
+                        System.out.println("3 successful withdrawals made. Ending program.");
+                        break;
+                    }
                 }
 
                 if (successfulWithdrawals == 3) {
-                    System.out.println("3 successful withdrawals made. Ending program.");
                     break;
                 }
-            }
-
-            if (successfulWithdrawals == 3) {
-                break;
             }
         }
 
